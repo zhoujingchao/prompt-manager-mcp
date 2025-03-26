@@ -1,0 +1,30 @@
+{
+  "name": "prompt-manager",
+  "version": "1.0.0",
+  "type": "module",
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "bin": {
+    "prompt-manager": "bin/index.js"
+  },
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node dist/index.js",
+    "dev": "npm run build && npx -y dotenv-cli -e .env -- npx -y @modelcontextprotocol/inspector npm run start",
+    "build": "esbuild src/index.ts --bundle --loader:.md=text --format=esm --platform=node --target=node22 --outfile=dist/index.js --external:express --external:@modelcontextprotocol/sdk/*",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "22",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.3"
+  }
+}
