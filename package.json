@@ -1,5 +1,5 @@
 {
-  "name": "prompt-manager",
+  "name": "@modelcontextprotocol/prompt-manager",
   "version": "1.0.0",
   "type": "module",
   "files": [
