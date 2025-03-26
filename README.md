@@ -63,7 +63,7 @@ Example prompt template file structure:
          "PROMPTS_DIR=<YOUR_PROMPTS_DIR>",
          "npx",
          "-y",
-         "prompt-manager"
+         "prompt-manager-mcp"
       ]
     }
   }
