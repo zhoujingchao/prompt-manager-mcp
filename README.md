@@ -63,7 +63,7 @@ Example prompt template file structure:
          "PROMPTS_DIR=<YOUR_PROMPTS_DIR>",
          "npx",
          "-y",
-         "@modelcontextprotocol/prompt-manager"
+         "prompt-manager"
       ]
     }
   }
