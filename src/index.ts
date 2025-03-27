@@ -3,13 +3,12 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import chokidar from 'chokidar';
 import { loadPromptTemplates } from './const.js';
-import packageJson from '../package.json' with { type: 'json' };
 
 
 // Create an MCP server
 const server = new McpServer({
   name: 'prompt-manager',
-  version: packageJson.version,
+  version: '1.0.7',
 });
 
 const PromptsDir = process.env.PROMPTS_DIR;
