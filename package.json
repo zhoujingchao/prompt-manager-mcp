@@ -1,6 +1,6 @@
 {
   "name": "prompt-manager-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "files": [
     "bin",
@@ -10,23 +10,33 @@
     "prompt-manager": "bin/index.js"
   },
   "scripts": {
-    "start": "node --experimental-specifier-resolution=node dist/index.js",
-    "dev": "npm run build && npx -y dotenv-cli -e .env -- npx -y @modelcontextprotocol/inspector npm run start",
-    "build": "esbuild src/index.ts --bundle --loader:.md=text --format=esm --platform=node --target=node22 --outfile=dist/index.js --external:express --external:@modelcontextprotocol/sdk/*",
-    "prepublishOnly": "npm run build"
+    "start": "node dist/index.js",
+    "build": "tsc && shx chmod +x dist/*.js",
+    "prepare": "npm run build",
+    "dev": "nodemon --watch src --ext ts,json --exec \"npm run build\"",
+    "dev-mcp": "npm run build && npx -y dotenv-cli -e .env -- npx -y @modelcontextprotocol/inspector npm run start",
+    "publish-patch": "npm version patch && npm run build && npm publish"
   },
-  "keywords": [],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "prompt",
+    "prompt-manager"
+  ],
   "author": "zhoujingchao5760@gmail.com",
   "repository": "git@github.com:zhoujingchao/prompt-manager-mcp.git",
   "homepage": "https://github.com/zhoujingchao/prompt-manager-mcp",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
+    "chokidar": "^4.0.3",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "22",
     "esbuild": "^0.25.0",
+    "nodemon": "^3.1.9",
+    "shx": "^0.4.0",
     "typescript": "^5.7.3"
   }
 }
